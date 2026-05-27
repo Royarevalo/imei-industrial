@@ -4,103 +4,192 @@ import { useState } from "react";
 
 export default function Navbar() {
 
-const [menuOpen,setMenuOpen]=useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-return (
+  return (
 
-<header className="fixed top-0 left-0 w-full z-50 bg-black/60 backdrop-blur-md border-b border-white/10">
+    <header
+      className="
+      fixed
+      top-0
+      left-0
+      w-full
+      z-50
+      bg-black/70
+      backdrop-blur-md
+      border-b
+      border-white/10
+      "
+    >
 
-<div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div
+        className="
+        max-w-7xl
+        mx-auto
+        px-6
+        py-3
+        flex
+        items-center
+        justify-between
+        "
+      >
 
-{/* Logo */}
+        {/* LOGO */}
 
-<div className="flex items-center gap-3">
+        <a
+          href="/"
+          className="flex items-center"
+        >
 
-<img
-src="/images/logo/logo.png"
-alt="IMEI"
-className="h-12"
-/>
+          <img
+            src="/images/logo/logo_imei.jpeg"
+            alt="IMEI"
+            className="
+            h-16
+            md:h-20
+            w-auto
+            object-contain
+            hover:scale-105
+            transition
+            duration-300
+            "
+          />
 
-<div>
+        </a>
 
-<h1 className="text-white font-bold">
-IMEI
-</h1>
+        {/* MENU DESKTOP */}
 
-<p className="text-gray-400 text-xs">
-Estructuras Industriales
-</p>
+        <nav
+          className="
+          hidden
+          md:flex
+          items-center
+          gap-10
+          text-sm
+          uppercase
+          tracking-widest
+          text-white
+          "
+        >
 
-</div>
+          <a
+            href="/"
+            className="hover:text-blue-400 transition"
+          >
+            Inicio
+          </a>
 
-</div>
+          <a
+            href="#servicios"
+            className="hover:text-blue-400 transition"
+          >
+            Servicios
+          </a>
 
-{/* Desktop Menu */}
+          <a
+            href="#proyectos"
+            className="hover:text-blue-400 transition"
+          >
+            Proyectos
+          </a>
 
-<nav className="hidden md:flex gap-8 text-white">
+          <a
+            href="#contacto"
+            className="hover:text-blue-400 transition"
+          >
+            Contacto
+          </a>
 
-<a href="/">Inicio</a>
+        </nav>
 
-<a href="#servicios">
-Servicios
-</a>
+        {/* BOTON CONTACTO */}
 
-<a href="#proyectos">
-Proyectos
-</a>
+        <a
+          href="#contacto"
+          className="
+          hidden
+          md:flex
+          bg-blue-600
+          hover:bg-blue-700
+          transition
+          px-6
+          py-3
+          rounded-xl
+          text-white
+          font-semibold
+          shadow-lg
+          "
+        >
 
-<a href="#contacto">
-Contacto
-</a>
+          Cotizar
 
-</nav>
+        </a>
 
-{/* Botón hamburguesa */}
+        {/* MOBILE BUTTON */}
 
-<button
-className="md:hidden text-white text-3xl"
-onClick={()=>setMenuOpen(!menuOpen)}
->
+        <button
+          className="
+          md:hidden
+          text-white
+          text-3xl
+          "
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
 
-☰
+          ☰
 
-</button>
+        </button>
 
-</div>
+      </div>
 
-{/* Mobile Menu */}
+      {/* MOBILE MENU */}
 
-{menuOpen && (
+      {menuOpen && (
 
-<div className="md:hidden bg-[#111111] p-6">
+        <div
+          className="
+          md:hidden
+          bg-black
+          border-t
+          border-white/10
+          "
+        >
 
-<div className="flex flex-col gap-6 text-white">
+          <div
+            className="
+            flex
+            flex-col
+            gap-6
+            p-6
+            text-white
+            text-lg
+            "
+          >
 
-<a href="/">
-Inicio
-</a>
+            <a href="/">
+              Inicio
+            </a>
 
-<a href="#servicios">
-Servicios
-</a>
+            <a href="#servicios">
+              Servicios
+            </a>
 
-<a href="#proyectos">
-Proyectos
-</a>
+            <a href="#proyectos">
+              Proyectos
+            </a>
 
-<a href="#contacto">
-Contacto
-</a>
+            <a href="#contacto">
+              Contacto
+            </a>
 
-</div>
+          </div>
 
-</div>
+        </div>
 
-)}
+      )}
 
-</header>
+    </header>
 
-)
+  );
 
 }
