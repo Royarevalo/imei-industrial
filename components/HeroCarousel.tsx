@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const images = [
@@ -12,150 +13,172 @@ const images = [
 
 export default function HeroCarousel() {
 
-const [current,setCurrent]=useState(0);
+  const [current, setCurrent] = useState(0);
 
-useEffect(()=>{
+  useEffect(() => {
 
-const interval=setInterval(()=>{
+    const interval = setInterval(() => {
 
-setCurrent((prev)=>
-prev===images.length-1
-?0
-:prev+1
-);
+      setCurrent((prev) =>
+        prev === images.length - 1
+          ? 0
+          : prev + 1
+      );
 
-},5000);
+    }, 5000);
 
-return ()=>clearInterval(interval);
+    return () => clearInterval(interval);
 
-},[]);
+  }, []);
 
-return(
+  return (
 
-<section
-className="
-relative
-h-screen
-overflow-hidden
-"
->
+    <section
+      className="
+      relative
+      h-screen
+      overflow-hidden
+      "
+    >
 
-{images.map((image,index)=>(
+      {/* Imágenes */}
 
-<div
-key={index}
-className={`
-absolute
-inset-0
-bg-cover
-bg-center
-transition-opacity
-duration-[2000ms]
+      {images.map((image, index) => (
 
-${current===index
-? "opacity-100"
-: "opacity-0"}
-`}
-style={{
-backgroundImage:`url(${image})`
-}}
-/>
+        <div
+          key={index}
+          className={`
+          absolute
+          inset-0
+          transition-opacity
+          duration-[2000ms]
 
-))}
+          ${
+            current === index
+              ? "opacity-100"
+              : "opacity-0"
+          }
+          `}
+        >
 
-<div
-className="
-absolute
-inset-0
-bg-black/60
-"
-/>
+          <Image
+            src={image}
+            alt="Proyecto IMEI"
+            fill
+            priority={index === 0}
+            quality={100}
+            sizes="100vw"
+            className="
+            object-cover
+            "
+          />
 
-<div
-className="
-relative
-z-10
-h-full
-flex
-items-center
-max-w-7xl
-mx-auto
-px-8
-"
->
+        </div>
 
-<div className="max-w-3xl">
+      ))}
 
-<p
-className="
-text-blue-500
-uppercase
-tracking-[5px]
-mb-4
-"
->
+      {/* Overlay */}
 
-IMEI
+      <div
+        className="
+        absolute
+        inset-0
+        bg-gradient-to-r
+        from-black/90
+        via-black/60
+        to-transparent
+        z-10
+        "
+      />
 
-</p>
+      {/* Contenido */}
 
-<h1
-className="
-text-6xl
-md:text-8xl
-font-bold
-mb-8
-leading-tight
-"
->
+      <div
+        className="
+        relative
+        z-20
+        h-full
+        flex
+        items-center
+        max-w-7xl
+        mx-auto
+        px-8
+        "
+      >
 
-Soluciones Industriales
-y Obra Civil
+        <div className="max-w-4xl">
 
-</h1>
+          <p
+            className="
+            text-blue-500
+            uppercase
+            tracking-[5px]
+            mb-5
+            "
+          >
+            IMEI
+          </p>
 
-<p
-className="
-text-gray-300
-text-xl
-mb-10
-"
->
+          <h1
+            className="
+            text-5xl
+            md:text-8xl
+            font-bold
+            leading-tight
+            mb-8
+            "
+          >
 
-Especialistas en obra civil,
-estructuras metálicas e
-instalaciones industriales.
+            Soluciones Industriales
+            y Obra Civil
 
-</p>
+          </h1>
 
-<div
-className="
-flex
-flex-wrap
-gap-4
-"
->
+          <p
+            className="
+            text-gray-300
+            text-lg
+            md:text-2xl
+            mb-12
+            max-w-3xl
+            "
+          >
 
-<div className="bg-black/30 px-6 py-3 rounded-xl">
-🏗️ Obra Civil
-</div>
+            Especialistas en estructuras
+            metálicas, instalaciones industriales,
+            mantenimiento y desarrollo
+            de proyectos.
 
-<div className="bg-black/30 px-6 py-3 rounded-xl">
-🏭 Estructuras
-</div>
+          </p>
 
-<div className="bg-black/30 px-6 py-3 rounded-xl">
-⚡ Instalaciones
-</div>
+          <div
+            className="
+            flex
+            flex-wrap
+            gap-4
+            "
+          >
 
-</div>
+            <div className="bg-black/30 px-6 py-4 rounded-xl backdrop-blur-sm">
+              🏗️ Obra Civil
+            </div>
 
-</div>
+            <div className="bg-black/30 px-6 py-4 rounded-xl backdrop-blur-sm">
+              🏭 Estructuras Metálicas
+            </div>
 
-</div>
+            <div className="bg-black/30 px-6 py-4 rounded-xl backdrop-blur-sm">
+              ⚡ Instalaciones Industriales
+            </div>
 
-</section>
+          </div>
 
-)
+        </div>
+
+      </div>
+
+    </section>
+
+  );
 
 }
