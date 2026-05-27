@@ -1,61 +1,61 @@
-import Services from "@/components/Services";
-
+import Clients from "@/components/Clients";
+import About from "@/components/About";
+import ContactForm from "@/components/ContactForm";
+import Footer from "@/components/Footer";
+import Gallery from "@/components/Gallery";
+import HeroCarousel from "@/components/HeroCarousel";
+import Map from "@/components/Map";
 import Navbar from "@/components/Navbar";
+import Services from "@/components/Services";
+import WhatsappButton from "@/components/WhatsappButton";
 
 export default function Home() {
   return (
     <>
-  <Navbar />
+      <Navbar />
 
-  <main className="min-h-screen bg-black text-white">
+      <main
+        className="
+        bg-black
+        text-white
+        overflow-hidden
+        "
+      >
 
-      {/* HERO SECTION */}
-      <section className="relative h-screen flex items-center justify-center">
+        {/* HERO CARRUSEL */}
 
-        {/* Fondo */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('/images/hero/hero-1.jpg')",
-          }}
-        />
+        <HeroCarousel />
 
-        {/* Capa oscura */}
-        <div className="absolute inset-0 bg-black/70" />
+        {/* QUIÉNES SOMOS */}
 
-        {/* Contenido */}
-        <div className="relative z-10 text-center px-6">
+        <About />
 
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            IMEI
-          </h1>
+        {/* SERVICIOS */}
 
-          <h2 className="text-2xl md:text-4xl font-semibold mb-6">
-            Instalaciones y Montaje de
-            Estructuras Industriales
-          </h2>
+        <Services />
 
-          <p className="max-w-3xl mx-auto text-lg md:text-xl text-gray-300 mb-10">
-            Soluciones integrales en obra civil,
-            estructuras metálicas y mantenimiento industrial.
-          </p>
+        {/* PROYECTOS DESTACADOS */}
 
-          <div className="flex flex-col md:flex-row gap-4 justify-center">
+      <Clients />
 
-            <button className="bg-blue-700 hover:bg-blue-800 px-8 py-4 rounded-xl text-lg font-semibold transition">
-              Ver Servicios
-            </button>
+        {/* CONTACTO */}
 
-            <button className="border border-white hover:bg-white hover:text-black px-8 py-4 rounded-xl text-lg font-semibold transition">
-              Contactar
-            </button>
+        <ContactForm />
 
-          </div>
-        </div>
-      </section>
-<Services />
-    </main>
+        {/* UBICACIÓN */}
+
+        <Map />
+
+        {/* FOOTER */}
+
+        <Footer />
+
+        {/* WHATSAPP */}
+
+        <WhatsappButton />
+
+      </main>
+
     </>
   );
 }

@@ -1,60 +1,106 @@
+"use client";
+
+import { useState } from "react";
+
 export default function Navbar() {
-  return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-black/60 backdrop-blur-md border-b border-white/10">
 
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+const [menuOpen,setMenuOpen]=useState(false);
 
-        {/* Logo */}
-        <div className="flex items-center gap-3">
+return (
 
-          <img
-            src="/images/logo/logo.png"
-            alt="IMEI Logo"
-            className="h-12 w-auto"
-          />
+<header className="fixed top-0 left-0 w-full z-50 bg-black/60 backdrop-blur-md border-b border-white/10">
 
-          <div>
-            <h1 className="text-white font-bold text-xl">
-              IMEI
-            </h1>
+<div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-            <p className="text-gray-400 text-xs">
-              Estructuras Industriales
-            </p>
-          </div>
-        </div>
+{/* Logo */}
 
-        {/* Menu */}
-        <nav className="hidden md:flex items-center gap-8 text-white">
+<div className="flex items-center gap-3">
 
-          <a href="#" className="hover:text-blue-400 transition">
-            Inicio
-          </a>
+<img
+src="/images/logo/logo.png"
+alt="IMEI"
+className="h-12"
+/>
 
-          <a href="#" className="hover:text-blue-400 transition">
-            Nosotros
-          </a>
+<div>
 
-          <a href="#" className="hover:text-blue-400 transition">
-            Servicios
-          </a>
+<h1 className="text-white font-bold">
+IMEI
+</h1>
 
-          <a href="#" className="hover:text-blue-400 transition">
-            Proyectos
-          </a>
+<p className="text-gray-400 text-xs">
+Estructuras Industriales
+</p>
 
-          <a href="#" className="hover:text-blue-400 transition">
-            Contacto
-          </a>
+</div>
 
-        </nav>
+</div>
 
-        {/* Botón */}
-        <button className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-xl font-semibold transition">
-          Cotizar
-        </button>
+{/* Desktop Menu */}
 
-      </div>
-    </header>
-  );
+<nav className="hidden md:flex gap-8 text-white">
+
+<a href="/">Inicio</a>
+
+<a href="#servicios">
+Servicios
+</a>
+
+<a href="#proyectos">
+Proyectos
+</a>
+
+<a href="#contacto">
+Contacto
+</a>
+
+</nav>
+
+{/* Botón hamburguesa */}
+
+<button
+className="md:hidden text-white text-3xl"
+onClick={()=>setMenuOpen(!menuOpen)}
+>
+
+☰
+
+</button>
+
+</div>
+
+{/* Mobile Menu */}
+
+{menuOpen && (
+
+<div className="md:hidden bg-[#111111] p-6">
+
+<div className="flex flex-col gap-6 text-white">
+
+<a href="/">
+Inicio
+</a>
+
+<a href="#servicios">
+Servicios
+</a>
+
+<a href="#proyectos">
+Proyectos
+</a>
+
+<a href="#contacto">
+Contacto
+</a>
+
+</div>
+
+</div>
+
+)}
+
+</header>
+
+)
+
 }
